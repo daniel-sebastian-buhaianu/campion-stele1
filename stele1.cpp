@@ -7,8 +7,10 @@ int main()
 	int K, N;
 	f >> K >> N;
 	f.close();
-	int a[KMAX+1], i, col = 0;
+	long long a[KMAX+1];
 	a[1] = 1;
+	int col = a[1] < N ? 1 : 0;
+	int i;
 	for (i = 2; i <= K; i++)
 	{
 		a[i] = a[i-1] + 2*(i-1);
@@ -18,7 +20,7 @@ int main()
 	for (i = K+1; a[i-1]+i-2 < N; i++)
 		a[i] = a[i-1] + 2*(i-1);
 	if (i > K+1) col = i-1;
-	int rand = 1, x = a[col]+col-1;
+	long long rand = 1, x = a[col]+col-1;
 	while (x > N) rand++, x--;
 	ofstream g("stele1.out");
 	g << a[K] << '\n';
@@ -26,3 +28,4 @@ int main()
 	g.close();
 	return 0;
 }
+
